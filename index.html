@@ -307,7 +307,10 @@
                 const wordElement = document.createElement("span");
                 wordElement.textContent = word;
                 wordElement.classList.add("word");
+                wordElement.setAttribute("draggable", "true");
+                wordElement.setAttribute("data-word", word);
 
+                // Обработчик кликов
                 wordElement.addEventListener("click", () => {
                     if (wordElement.parentElement === wordBank) {
                         sentenceContainer.appendChild(wordElement);
@@ -316,15 +319,93 @@
                     }
                 });
 
+                // Обработчик начала перетаскивания
+                wordElement.addEventListener("dragstart", (event) => {
+                    event.dataTransfer.setData("text/plain", wordElement.getAttribute("data-word"));
+                    wordElement.classList.add("dragging");
+                });
+
+                // Удаление класса dragging
+                wordElement.addEventListener("dragend", () => {
+                    wordElement.classList.remove("dragging");
+                    removeDropIndicators();
+                });
+
                 wordBank.appendChild(wordElement);
             });
 
+            // Настройка контейнеров
+            [wordBank, sentenceContainer].forEach(container => {
+                container.addEventListener("dragover", (event) => {
+                    event.preventDefault();
 
-            document.getElementById("checkSentence").onclick = () => {
+                    // Получаем перетаскиваемый элемент и ближайший к курсору
+                    const draggingElement = document.querySelector(".dragging");
+                    const afterElement = getDragAfterElement(container, event.clientX);
+
+                    removeDropIndicators();
+
+                    // Добавляем индикатор вставки
+                    const dropIndicator = document.createElement("div");
+                    dropIndicator.classList.add("drop-indicator");
+                    if (afterElement == null) {
+                        container.appendChild(dropIndicator);
+                    } else {
+                        container.insertBefore(dropIndicator, afterElement);
+                    }
+                });
+
+                container.addEventListener("drop", (event) => {
+                    event.preventDefault();
+                    const draggingElement = document.querySelector(".dragging");
+                    const dropIndicator = container.querySelector(".drop-indicator");
+
+                    if (dropIndicator) {
+                        container.insertBefore(draggingElement, dropIndicator);
+                        removeDropIndicators();
+                    }
+                });
+
+                container.addEventListener("dragleave", () => {
+                    removeDropIndicators();
+                });
+            });
+
+            // Удаляет все индикаторы вставки
+            function removeDropIndicators() {
+                document.querySelectorAll(".drop-indicator").forEach(indicator => indicator.remove());
+            }
+
+            // Функция для определения элемента, после которого вставлять
+            function getDragAfterElement(container, x) {
+                const draggableElements = [...container.querySelectorAll(".word:not(.dragging)")];
+
+                return draggableElements.reduce(
+                    (closest, child) => {
+                        const box = child.getBoundingClientRect();
+                        const offset = x - box.left - box.width / 2;
+
+                        if (offset < 0 && offset > closest.offset) {
+                            return { offset: offset, element: child };
+                        } else {
+                            return closest;
+                        }
+                    },
+                    { offset: Number.NEGATIVE_INFINITY }
+                ).element;
+            }
+        }
+
+        
+        document.getElementById("checkSentence").onclick = () => {
             const userSentence = Array.from(sentenceContainer.children)
                 .map(wordElement => wordElement.textContent)
                 .join(" ");
             const playButton = document.getElementById("playButton");
+            const feedback = document.getElementById("feedback");
+            
+            // Получаем текущее предложение
+            const sentence = sentences[currentIndex];
 
             if (userSentence === sentence.en) {
                 playAudio(sentence.en);
@@ -337,7 +418,8 @@
                 playButton.style.display = "none"; // Скрываем кнопку PLAY
             }
         };
-        }
+
+        
 
         function showNextLesson() {
             currentIndex = (currentIndex + 1) % sentences.length;
