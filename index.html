@@ -9,37 +9,38 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start;
+            min-height: 100vh;
             background-color: #f4f4f4;
-            background-image: url('in the end.webp'); 
+            background-image: url('in the end.webp');
             background-size: cover;
             background-position: center;
         }
 
         h1 {
             margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 1.5rem;
             text-align: center;
             background-color: rgba(97, 74, 224, 0.562);
             border-radius: 15px;
+            padding: 10px;
         }
 
         #generateLesson, #previousLesson, #play {
             display: inline-block;
-            min-width: 140px;
-            margin: 20px 10px;
-            padding: 10px 20px;
+            min-width: 100px;
+            margin: 10px 5px;
+            padding: 8px 16px;
             background: #ffc107;
             color: black;
             border: none;
             border-radius: 15px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             transition: background 0.3s, transform 0.2s;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -48,23 +49,18 @@
             background: #e0a800;
             transform: scale(1.05);
         }
-        .index-button:hover {
-            background: #666560;
-            transform: scale(1.05);
-        }
 
         #instruction {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             text-align: center;
             margin: 0 auto 20px auto;
             background-color: rgba(255, 255, 255, 0.5);
             color: #000000;
-            padding: 10px 20px;
+            padding: 10px;
             border-radius: 7px;
             display: block;
-            max-width: 1000px;
-            width: fit-content;
+            width: 90%;
         }
 
         #wordBank, #sentenceContainer {
@@ -72,13 +68,10 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            padding: 10px;
-            min-height: 100px;
-            min-width: 1000px;
-            max-height: 120px;
-            width: 80%;
-            max-width: 600px;
+            gap: 8px;
+            padding: 8px;
+            min-height: 80px;
+            width: 90%;
             margin: 10px 0;
             background-color: transparent;
             border: none;
@@ -87,16 +80,16 @@
         }
 
         .word {
-            padding: 10px 15px;
+            padding: 8px 12px;
             background: #007bff;
             color: white;
             border-radius: 5px;
             cursor: pointer;
             user-select: none;
             text-align: center;
-            min-width: 70px;
+            min-width: 60px;
             display: inline-block;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: background 0.3s, transform 0.2s;
         }
 
@@ -109,20 +102,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-top: 20px;
         }
 
         #checkSentence {
-            min-width: 80px;
-            min-height: 44px;
-            padding: 10px 18px;
+            min-width: 70px;
+            min-height: 40px;
+            padding: 8px 16px;
             background-color: rgba(5, 160, 70, 0.8);
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: background 0.3s, transform 0.2s;
             font-weight: bold;
         }
@@ -137,22 +130,17 @@
         }
 
         #feedback {
-            min-width: 50px;
-            min-height: 24px;
-            padding: 10px 18px;
+            min-width: 40px;
+            min-height: 20px;
+            padding: 8px 16px;
             background-color: rgba(26, 26, 27, 0.8);
             color: white;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: background 0.3s, transform 0.2s;
-        }
-
-        .index-buttons-container {
-            margin-top: 10px;
-            text-align: center;
         }
 
         .play-container {
@@ -163,13 +151,8 @@
         }
 
         #playButton {
-            display: none;
-        }
-
-
-        #playButton {
-            min-width: 80px;
-            padding: 10px 20px;
+            min-width: 70px;
+            padding: 8px 16px;
             background: rgba(204, 66, 24, 0.8);
             color: white;
             border: none;
@@ -184,12 +167,50 @@
             background: #882821;
             transform: scale(1.05);
         }
+
+        #current_tense {
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px auto 20px auto;
+            background-color: rgba(90, 90, 92, 0.8);
+            color: #080808;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: block;
+            width: 90%;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            #instruction {
+                font-size: 1rem;
+            }
+
+            .word {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            #checkSentence, #playButton {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            #current_tense {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>IN THE END</h1>
     <div>
         <p id="instruction"></p>
+        <p id="current_tense"></p>
         <div id="sentenceContainer"></div>
         <div id="wordBank"></div>
         <div class="check-container">
@@ -205,58 +226,53 @@
             <audio id="audioPlayer" src="intheend1.mp3"></audio>
         </div>
     </div>
-
     <script>
         const sentences = [
-           // in the end
-{ en: "It starts with one thing I don't know why.", ru: "Все начинается с одной вещи, я не знаю, почему. " }, // 1
-{ en: "It doesn't even matter how hard you try", ru: "Неважно даже, как сильно ты стараешься." },             // 2
-{ en: "Keep that in mind", ru: "Помни об этом." },                                                            // 3
-{ en: "I designed this rhyme to explain in due time", ru: "Я придумал эти строки, чтобы объяснить в свое время." }, // 4
+        
+        { en: "It starts with one thing I don't know why.", ru: "Все начинается с одной вещи, я не знаю, почему.", tense: "Present Simple" },
+        { en: "It doesn't even matter how hard you try", ru: "Неважно даже, как сильно ты стараешься.", tense: "Present Simple" },
+        { en: "Keep that in mind", ru: "Помни об этом.", tense: "Imperative" },
+        { en: "I designed this rhyme to explain in due time", ru: "Я придумал эти строки, чтобы объяснить в свое время.", tense: "Past Simple + Infinitive" },
 
-{ en: "All I know time is a valuable thing", ru: "Все, что я знаю, время — это ценная вещь." },               // 5
-{ en: "Watch it fly by as the pendulum swings", ru: "Смотри, как оно пролетает, как качается маятник." },     // 6
-{ en: "Watch it count down to the end of the day.", ru: "Смотри, как оно отсчитывает время до конца дня." },   // 7
-{ en: "The clock ticks life away", ru: "Часы отсчитывают жизнь." },                                            // 8
+        { en: "All I know time is a valuable thing", ru: "Все, что я знаю, время — это ценная вещь.", tense: "Present Simple" },
+        { en: "Watch it fly by as the pendulum swings", ru: "Смотри, как оно пролетает, как качается маятник.", tense: "Present Simple" },
+        { en: "Watch it count down to the end of the day.", ru: "Смотри, как оно отсчитывает время до конца дня.", tense: "Present Simple" },
+        { en: "The clock ticks life away", ru: "Часы отсчитывают жизнь.", tense: "Present Simple" },
 
+        { en: "'It's so unreal", ru: "Оно так нереально", tense: "Present Simple" },
+        { en: "Didn't look out below", ru: "Не смотрел вперед", tense: "Past Simple" },
+        { en: "Watch the time go right out the window", ru: "Смотри, как время улетает в окно.", tense: "Present Simple" },
+        { en: "Trying to hold on, didn't even know I wasted it all just to watch you go", ru: "Пытаясь удержаться, даже не осознавал, что потратил всё зря, просто чтобы увидеть, как ты уходишь.", tense: "Past Continuous + Past Simple" },
 
-{ en: "'It's so unreal", ru: "Оно так нереально" }, // 9
-{ en: "Didn't look out below", ru: "Не смотрел вперед" }, // 10
-{ en: "Watch the time go right out the window", ru: "Смотри, как время улетает в окно." }, //11
-{ en: "Trying to hold on, didn't even know I wasted it all just to watch you go", ru: "Пытаясь удержаться, даже не осознавал, что потратил всё зря, просто чтобы увидеть, как ты уходишь.," },
- 
-{ en: "I kept everything inside", ru: "Я держал все внутри" },         // 13
-{ en: "And even though I tried, it all fell apart", ru: "И хотя я старался, это всё развалилось." }, // 14
-{ en: "What it meant to me?", ru: "Что это означало для меня?" },                                    // 15
-{ en: "Will eventually be a memory of a time when", ru: "В конечном итоге станет воспоминанием о времени, когда..." }, // 16
+        { en: "I kept everything inside", ru: "Я держал все внутри", tense: "Past Simple" },
+        { en: "And even though I tried, it all fell apart", ru: "И хотя я старался, это всё развалилось.", tense: "Past Simple" },
+        { en: "What it meant to me?", ru: "Что это означало для меня?", tense: "Past Simple" },
+        { en: "Will eventually be a memory of a time when", ru: "В конечном итоге станет воспоминанием о времени, когда...", tense: "Future Simple" },
 
+        { en: "I tried so hard and got so far", ru: "Я так старался и зашёл так далеко", tense: "Past Simple" },
+        { en: "But in the end it doesn't even matter", ru: "Но в итоге это даже не важно", tense: "Present Simple" },
+        { en: "I had to fall to lose it all", ru: "Мне пришлось упасть чтобы потерять всё", tense: "Past Simple" },
+        { en: "But in the end it doesn't even matter", ru: "Но в итоге это даже не важно", tense: "Present Simple" },
 
-{ en: "I tried so hard and got so far", ru: "Я так старался и зашёл так далеко" }, //17
-{ en: "But in the end it doesn't even matter", ru: "Но в итоге это даже не важно" },//18
-{ en: "I had to fall to lose it all", ru: "Мне пришлось упасть чтобы потерять всё" },//19
-{ en: "But in the end it doesn't even matter", ru: "Но в итоге это даже не важно" },//20
+        { en: "One thing, I don't know why", ru: "Такая штука, я не знаю, почему", tense: "Present Simple" },
+        { en: "It doesn't even matter how hard you try", ru: "Даже неважно насколько сильно стараешься,", tense: "Present Simple" },
+        { en: "Keep that in mind I designed this rhyme to remind myself how I tried so hard", ru: "Помни об этом я придумал эти рифмы чтобы напомнить себе, как сильно я старался", tense: "Past Simple + Infinitive" },
+        { en: "In spite of the way you were mocking me", ru: "Несмотря на то, как ты издевалась надо мной", tense: "Past Continuous" },
+        { en: "Acting like I was part of your property", ru: "Действуя так, будто я был частью твоей собственности.", tense: "Past Continuous" },
+        { en: "Remembering all the times you fought with me", ru: "Вспоминая все те времена, когда ты ссорилась со мной.", tense: "Present Continuous" },
+        { en: "I'm surprised it got so far", ru: "Я был удивлен, что это зашло так далеко.", tense: "Present Simple + Past Simple" },
 
+        { en: "Things aren't the way they were before", ru: "Все уже не так, как было раньше", tense: "Present Simple" },
+        { en: "You wouldn't even recognize me anymore", ru: "Ты даже не узнала бы меня больше", tense: "Conditional" },
+        { en: "Not that you knew me back then", ru: "Не такой каким ты знала меня тогда", tense: "Past Simple" },
+        { en: "But it all comes back to me in the end", ru: "Но все возвращается ко мне в итоге", tense: "Present Simple" },
+        { en: "You kept everything inside", ru: "Ты все держала внутри", tense: "Past Simple" },
+        { en: "And even though I tried, it all fell apart", ru: "И хотя я старался, все развалилось", tense: "Past Simple" },
+        { en: "What it meant to me will eventually be a memory of a time when", ru: "Что это означало для меня, в конечном итоге станет воспоминанием о времени, когда...", tense: "Future Simple" },
 
-{ en: "One thing, I don't know why", ru: "Такая штука, я не знаю, почему" },//21
-{ en: "It doesn't even matter how hard you try", ru: "Даже неважно насколько сильно стараешься," },//22
-{ en: "Keep that in mind I designed this rhyme to remind myself how I tried so hard", ru: "Помни об этом я придумал эти рифмы чтобы напомнить себе, как сильно я старался" },
-{ en: "In spite of the way you were mocking me", ru: "Несмотря на то, как ты издевалась надо мной" },//24
-{ en: "Acting like I was part of your property", ru: "Действуя так, будто я был частью твоей собственности." },//25
-{ en: "Remembering all the times you fought with me", ru: "Вспоминая все те времена, когда ты ссорилась со мной." },//26
-{ en: "I'm surprised it got so far", ru: "Я был удивлен, что это зашло так далеко." },//27
-
-{ en: "Things aren't the way they were before", ru: "Все уже не так, как было раньше" },//28
-{ en: "You wouldn't even recognize me anymore", ru: "Ты даже не узнала бы меня больше" },//29
-{ en: "Not that you knew me back then", ru: "Не такой каким ты знала меня тогда" },//30
-{ en: "But it all comes back to me in the end", ru: "Но все возвращается ко мне в итоге" },//31
-{ en: "You kept everything inside", ru: "Ты все держала внутри" },//32
-{ en: "And even though I tried, it all fell apart", ru: "И хотя я старался, все развалилось" },//33
-{ en: "What it meant to me will eventually be a memory of a time when", ru: "Что это означало для меня, в конечном итоге станет воспоминанием о времени, когда..." },//34
-
-{ en: "I’ve put my trust in you", ru: "Я доверился тебе" },//35
-{ en: "Pushed as far as I can go", ru: "Старался изо всех сил." },//36
-{ en: "And for all this there’s only one thing you should know", ru: "Именно поэтому ты должна знать, что" },//37
-
+        { en: "I’ve put my trust in you", ru: "Я доверился тебе", tense: "Present Perfect" },
+        { en: "Pushed as far as I can go", ru: "Старался изо всех сил.", tense: "Past Simple" },
+        { en: "And for all this there’s only one thing you should know", ru: "Именно поэтому ты должна знать, что", tense: "Present Simple" }
 
         ];
 
@@ -297,8 +313,14 @@
             const sentenceContainer = document.getElementById("sentenceContainer");
             const instruction = document.getElementById("instruction");
             const feedback = document.getElementById("feedback");
+            const currentTense = document.getElementById("current_tense");
 
+            // Устанавливаем текст подсказки
             instruction.textContent = `"${sentence.ru}"`;
+
+            // Выводим время в отдельный блок
+            currentTense.textContent = `${sentence.tense}`;
+
             wordBank.innerHTML = "";
             sentenceContainer.innerHTML = "";
             feedback.textContent = "";
@@ -310,7 +332,6 @@
                 wordElement.setAttribute("draggable", "true");
                 wordElement.setAttribute("data-word", word);
 
-                // Обработчик кликов
                 wordElement.addEventListener("click", () => {
                     if (wordElement.parentElement === wordBank) {
                         sentenceContainer.appendChild(wordElement);
@@ -319,13 +340,11 @@
                     }
                 });
 
-                // Обработчик начала перетаскивания
                 wordElement.addEventListener("dragstart", (event) => {
                     event.dataTransfer.setData("text/plain", wordElement.getAttribute("data-word"));
                     wordElement.classList.add("dragging");
                 });
 
-                // Удаление класса dragging
                 wordElement.addEventListener("dragend", () => {
                     wordElement.classList.remove("dragging");
                     removeDropIndicators();
@@ -334,18 +353,15 @@
                 wordBank.appendChild(wordElement);
             });
 
-            // Настройка контейнеров
+            // Настройка drag-and-drop
             [wordBank, sentenceContainer].forEach(container => {
                 container.addEventListener("dragover", (event) => {
                     event.preventDefault();
-
-                    // Получаем перетаскиваемый элемент и ближайший к курсору
                     const draggingElement = document.querySelector(".dragging");
                     const afterElement = getDragAfterElement(container, event.clientX);
 
                     removeDropIndicators();
 
-                    // Добавляем индикатор вставки
                     const dropIndicator = document.createElement("div");
                     dropIndicator.classList.add("drop-indicator");
                     if (afterElement == null) {
@@ -371,30 +387,27 @@
                 });
             });
 
-            // Удаляет все индикаторы вставки
             function removeDropIndicators() {
                 document.querySelectorAll(".drop-indicator").forEach(indicator => indicator.remove());
             }
 
-            // Функция для определения элемента, после которого вставлять
             function getDragAfterElement(container, x) {
                 const draggableElements = [...container.querySelectorAll(".word:not(.dragging)")];
 
-                return draggableElements.reduce(
-                    (closest, child) => {
-                        const box = child.getBoundingClientRect();
-                        const offset = x - box.left - box.width / 2;
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = x - box.left - box.width / 2;
 
-                        if (offset < 0 && offset > closest.offset) {
-                            return { offset: offset, element: child };
-                        } else {
-                            return closest;
-                        }
-                    },
-                    { offset: Number.NEGATIVE_INFINITY }
-                ).element;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
             }
         }
+
+
 
         
         document.getElementById("checkSentence").onclick = () => {
@@ -445,17 +458,44 @@
             audioPlayer.src = `intheend${currentIndex + 1}.mp3`;
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            setupDragAndDrop(sentences[currentIndex]);
+        
+    document.addEventListener("DOMContentLoaded", () => {
+        setupDragAndDrop(sentences[currentIndex]);
 
-            document.getElementById("generateLesson").addEventListener("click", showNextLesson);
-            document.getElementById("previousLesson").addEventListener("click", showPreviousLesson);
+        const playButton = document.getElementById("playButton");
+        const audioPlayer = document.getElementById("audioPlayer");
 
-            document.getElementById("playButton").addEventListener("click", () => {
-                const audioPlayer = document.getElementById("audioPlayer");
-                audioPlayer.play();
-            });
+        document.getElementById("generateLesson").addEventListener("click", () => {
+            showNextLesson();
+            resetPlayButton(); // Сбрасываем кнопку в состояние "PLAY"
         });
+
+        document.getElementById("previousLesson").addEventListener("click", () => {
+            showPreviousLesson();
+            resetPlayButton(); // Сбрасываем кнопку в состояние "PLAY"
+        });
+
+        playButton.addEventListener("click", () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playButton.textContent = "PAUSE";
+            } else {
+                audioPlayer.pause();
+                playButton.textContent = "PLAY";
+            }
+        });
+
+        audioPlayer.addEventListener("ended", () => {
+            playButton.textContent = "PLAY"; // Возвращаем текст кнопки на "PLAY" после окончания воспроизведения
+        });
+
+        function resetPlayButton() {
+            audioPlayer.pause(); // Останавливаем воспроизведение
+            audioPlayer.currentTime = 0; // Сбрасываем аудио в начало
+            playButton.textContent = "PLAY"; // Устанавливаем текст кнопки на "PLAY"
+        }
+    });
+
 
 
 
